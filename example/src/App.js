@@ -1,11 +1,13 @@
 import React from "react";
-import { events, AvatarComponent } from 'codebaby-react';
+import codebaby from '@codebaby-avatars/codebaby-react';
 
 const App = () => {
   setTimeout(() => {
-    events.trigger('ask', 'Hello');
+    codebaby.events.trigger('ask', 'Hello');
   }, 3000);
-  return <div>Hello, World!<AvatarComponent id="default" /></div>;
+  return <div>
+    <codebaby.AvatarComponent id="react2" env="local" />
+  </div>;
 };
 
 export default App;

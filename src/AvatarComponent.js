@@ -48,16 +48,16 @@ const AvatarComponent = (data) => {
   if(data.id) {
     if(data.env) {
       if(data.env == 'dev') {
-        url = 'https://bridge3-dev.codebaby.com' + '/loader.js?env=dev&id='+data.id;
+        url = 'https://bridge3-dev.codebaby.com/loader.js?env=dev&id='+data.id;
       } else if(data.env == 'qa') {
-        url = 'https://bridge3-qa.codebaby.com' + '/loader.js?env=qa&id='+data.id;
+        url = 'https://bridge3-qa.codebaby.com/loader.js?env=qa&id='+data.id;
       } else if(data.env == 'local' || data.env == 'localhost') {
-        url = 'http://localhost:8080' + '/loader.js?env=local&id='+data.id;
+        url = 'http://localhost:8080/loader.js?env=local&id='+data.id;
       }
     }
 
     if(!url) {
-      url = 'https://portal.codebaby.com' + '/loader.js?id='+data.id;
+      url = 'https://portal.codebaby.com/loader.js?id='+data.id;
     }
 
     (async () => {
@@ -67,7 +67,10 @@ const AvatarComponent = (data) => {
   } else {
     console.error('Include an id parameter to initialize the avatar component.')
   }
-  return <div id="avatarContainer"></div>;
+  //avatars are not currently loaded into a container but maybe should be for bottombar ui, fallback to the body
+  //potential gotcha with avatarId not matching the settings in the portal
+  //look for this class, use it if we can the
+  return <div id="avatarContainer" className="codebaby-react-avatar-container"></div>;
 };
 
 

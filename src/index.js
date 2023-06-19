@@ -1,3 +1,8 @@
 
-export { default as AvatarComponent } from './AvatarComponent';
-export { default as events } from './events';
+import AvatarComponent from './AvatarComponent';
+import events from './events';
+
+export default {
+	AvatarComponent,
+	events
+}
