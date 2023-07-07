@@ -6,7 +6,7 @@ const App = () => {
     codebaby.events.trigger('ask', 'Hello');
   }, 3000);
   return <div>
-    <codebaby.AvatarComponent id="react2" env="local" />
+    <codebaby.AvatarComponent id="gpttest" />
   </div>;
 };
 

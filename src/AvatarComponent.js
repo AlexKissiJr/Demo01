@@ -1,4 +1,4 @@
-// AvatarComponent.js
+
 import React from 'react';
 import events from './events';
 window.vidbaby$ = {}
@@ -67,9 +67,6 @@ const AvatarComponent = (data) => {
   } else {
     console.error('Include an id parameter to initialize the avatar component.')
   }
-  //avatars are not currently loaded into a container but maybe should be for bottombar ui, fallback to the body
-  //potential gotcha with avatarId not matching the settings in the portal
-  //look for this class, use it if we can the
   return <div id="avatarContainer" className="codebaby-react-avatar-container"></div>;
 };
 
