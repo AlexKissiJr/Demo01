@@ -13,8 +13,7 @@
   "exports": {
     ".": {
       "import": "./dist/codebaby-react.esm.js",
-      "require": "./dist/codebaby-react.js",
-      "default": "./dist/codebaby-react.umd.js"
+      "require": "./dist/codebaby-react.js"
     }
   },
   "directories": {
