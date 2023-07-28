@@ -1,7 +1,7 @@
-import p, { useState as g, useLayoutEffect as $, createContext as j, forwardRef as E, useCallback as v, useMemo as C, useImperativeHandle as R, useEffect as k, Fragment as x, useContext as D } from "react";
-const w = ({ src: e, type: a = "module", async: s = !0 }) => new Promise((b, i) => {
+import p, { useState as g, useLayoutEffect as j, createContext as $, forwardRef as E, useCallback as v, useMemo as C, useImperativeHandle as R, useEffect as k, Fragment as x, useContext as D } from "react";
+const w = ({ src: e, type: a = "module", async: s = !0 }) => new Promise((c, i) => {
   const t = document.createElement("script");
-  t.src = e, t.type = a, t.async = s, t.onload = () => b(t), t.onerror = () => i(new Error("Failed to load script. Check your internet connection.")), document.head.appendChild(t);
+  t.src = e, t.type = a, t.async = s, t.onload = () => c(t), t.onerror = () => i(new Error("Failed to load script. Check your internet connection.")), document.head.appendChild(t);
 });
 async function S() {
   if (typeof window.jQuery > "u" || typeof window.$ != "function" || window.jQuery.fn.jquery === void 0 || window.jQuery.fn.jquery < "3.4.1") {
@@ -16,16 +16,16 @@ async function S() {
   typeof window.$ > "u" && (window.$ = window.jQuery);
 }
 function A({ id: e, env: a }) {
-  const [s, b] = g();
-  return $(() => {
+  const [s, c] = g();
+  return j(() => {
     const i = async () => {
       const t = a === "local" || a === "localhost" ? `http://localhost:8080/loader.js?env=${a}&id=${e}` : `https://portal.codebaby.com/loader.js?env=${a || "prod"}&id=${e}`;
-      await S(), await w({ src: t }), b(() => window.vidbaby$);
+      await S(), await w({ src: t }), c(() => window.vidbaby$);
     };
     window ? i() : setTimeout(i, 3e3);
-  }, []), window.vidbaby$;
+  }, []), s;
 }
-const N = j({
+const N = $({
   on(e, a) {
   },
   off(e, a) {
@@ -73,37 +73,37 @@ const N = j({
     camChange: "na-camChange.vidbaby",
     glbLoaded: "na-glbLoaded.vidbaby"
   }
-}, l = P, Q = E(function({ children: a, id: s, env: b, ...i }, t) {
-  const o = A({ id: s, env: b }), u = v((r, d) => {
+}, l = P, Q = E(function({ children: a, id: s, env: c, ...i }, t) {
+  const o = A({ id: s, env: c }), u = v((r, d) => {
     o && o(document).on(l.tansformEventName(r), d);
   }, [o]), f = v((r, d) => {
     o && o(document).off(l.tansformEventName(r), d);
   }, [o]), m = v((r, d) => {
     o && o(document).trigger(l.tansformEventName(r), d);
-  }, [o]), c = C(() => ({
+  }, [o]), b = C(() => ({
     on: u,
     off: f,
     trigger: m
   }), [u, f, m]);
   return R(t, function() {
-    return c;
-  }, [c]), k(() => {
+    return b;
+  }, [b]), k(() => {
     if (!o || !i || Object.keys(i).length === 0)
       return;
     const r = i, d = Object.keys(i).filter((n) => n.startsWith("on")).map((n) => n.replace("on", "")).map((n) => n.charAt(0).toLowerCase() + n.slice(1));
     if (!(d.length <= 0)) {
       for (const n of d) {
         const y = `on${n.charAt(0).toUpperCase() + n.slice(1)}`;
-        c.on(n, r[y]);
+        b.on(n, r[y]);
       }
       return () => {
         for (const n of d) {
           const y = `on${n.charAt(0).toUpperCase() + n.slice(1)}`;
-          c.off(n, r[y]);
+          b.off(n, r[y]);
         }
       };
     }
-  }, [i, o]), /* @__PURE__ */ p.createElement(h.Provider, { value: c }, /* @__PURE__ */ p.createElement(x, null, a, /* @__PURE__ */ p.createElement("div", { id: "avatarContainer", className: "codebaby-react-avatar-container" })));
+  }, [i, o]), /* @__PURE__ */ p.createElement(h.Provider, { value: b }, /* @__PURE__ */ p.createElement(x, null, a, /* @__PURE__ */ p.createElement("div", { id: "avatarContainer", className: "codebaby-react-avatar-container" })));
 });
 function q() {
   const { on: e, off: a, trigger: s } = D(h);

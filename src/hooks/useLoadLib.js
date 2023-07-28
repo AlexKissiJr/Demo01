@@ -62,7 +62,7 @@ function useLoadCodebaby({ id, env }) {
     }
   }, []);  
 
-  return null || window.vidbaby$;
+  return getVB;
 };
 
 export default useLoadCodebaby;

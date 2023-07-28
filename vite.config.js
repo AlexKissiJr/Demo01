@@ -4,10 +4,14 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 
 export default defineConfig({
-  plugin: [react()],
+  plugin: [
+    react()
+  ],
   build: {
     ssr: false,
     sourcemap: true,
+    declaration: true,
+    declarationDir: './dist',
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
       name: 'CodebabyReact',
@@ -26,13 +30,9 @@ export default defineConfig({
       formats: ['es', 'umd', 'cjs'],
     },
     rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
       external: ['react', 'react-dom'],
       output: {
         compact: true,
-        // Provide global variables to use in the UMD build
-        // for externalized deps
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM'

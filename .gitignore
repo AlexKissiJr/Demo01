@@ -1,5 +1,9 @@
 node_modules/
-example/node_modules
+example/node_modules/
+example/.gitignore
+/example/README.md
+/example/package-lock.json
+/example/yarn.lock
 yarn.lock
 vite.config.js.*
 oldpackage.json

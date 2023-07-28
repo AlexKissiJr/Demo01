@@ -1,0 +1,192 @@
+/* define CSS variables to all components */
+:root {
+  --zero: 0;
+  --size: 100px;
+}
+
+* {
+  scroll-behavior: smooth;
+  scroll-padding-top: 40px;
+  transition: all ease-in 200ms;
+}
+
+/* css color scheme (dark/light) by user ui system */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: black;
+    --text-color: white;
+    --accent-color: orange;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: white;
+    --text-color: black;
+    --accent-color: blue;
+  }
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+}
+h1, h2, h3 {
+  margin: var(--zero);
+}
+a {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+}
+a:hover {
+  text-decoration: underline;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  width: var(--size);
+  height: var(--size);
+}
+.logo h1 {
+  font-size: 36px;
+  margin-left: 10px;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+.nav ul {
+  list-style: none;
+  display: flex;
+  margin: var(--zero);
+  padding: var(--zero);
+}
+.nav ul li {
+  margin-left: 10px;
+}
+.nav ul li:first-child {
+  margin-left: var(--zero);
+}
+.nav ul li a {
+  font-size: 18px;
+  font-weight: bold;
+}
+.hero {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+}
+.hero img {
+  width: 50%;
+  height: auto;
+}
+.hero-content {
+  width: 50%;
+  padding-left: 20px;
+}
+.hero-content h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.hero-content p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+.hero-content a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  border-radius: 5px;
+  margin-top: 20px;
+  text-decoration: none;
+}
+.hero-content a:hover {
+  text-decoration: none;
+  opacity: 0.7;
+}
+.gallery {
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  grid-gap: 20px;
+  margin-top: 40px;
+}
+.gallery img {
+  /* --size variable will now have a new value just on this selector */
+  --size: 100%;
+  /* second parameter of var() is a callback if --size or var doesn't work properly or not be defined  */
+  width: var(--size, 100%);
+  height: auto;
+  object-fit: cover;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+.footer p {
+  font-size: 16px;
+}
+.footer ul {
+  list-style: none;
+  display: flex;
+  margin: var(--zero);
+  padding: var(--zero);
+}
+.footer ul li {
+  margin-left: 10px;
+}
+.footer ul li:first-child {
+  margin-left: var(--zero);
+}
+.footer ul li a {
+  font-size: 16px;
+}
+/* Adiciona media queries para tornar a página responsiva */
+@media (max-width: 600px) {
+  /* Reduz o tamanho da logo e do título */
+  .logo img {
+    width: 80px;
+    height: 80px;
+  }
+  .logo h1 {
+    font-size: 24px;
+    margin-left: 5px;
+  }
+  /* Coloca o menu em uma coluna vertical */
+  .nav {
+    flex-direction: column;
+  }
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav ul li {
+    margin-top: 10px;
+  }
+  .nav ul li:first-child {
+    margin-top: var(--zero);
+  }
+  .hero {
+    flex-direction: column-reverse;
+  }
+  .hero img {
+    width: 100%;
+  }
+  .hero-content {
+    width: 100%;
+    padding-left: var(--zero);
+    text-align: center;
+  }
+}
