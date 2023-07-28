@@ -1,6 +1,5 @@
-node_modules/
-example/node_modules
-yarn.lock
 vite.config.js.*
+vite.config.js
+nodemon.json
 oldpackage.json
 yarn-error.log

@@ -1,8 +1,3 @@
-
-import AvatarComponent from './AvatarComponent';
-import events from './events';
-
-export default {
-	AvatarComponent,
-	events
-}
+"use client";
+export * from "./components/AvatarProvider";
+export * from "./hooks/useCodebabyEvents";
