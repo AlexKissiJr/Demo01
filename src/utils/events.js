@@ -20,8 +20,6 @@ const events = {
 		playerBuilt: 'na-playerBuilt.vidbaby',
 		unPark: 'na-unPark.vidbaby',
 		segmentEnded: 'na-segmentEnded.vidbaby',
-		playResponseData: 'na-playResponseData.vidbaby',
-		microphoneData: 'na-microphoneData.vidbaby',
 		clientData: 'na-clientData.vidbaby',
 		extractedEntity: 'na-extractedEntity.vidbaby',
 		play: 'na-play.vidbaby',

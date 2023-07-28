@@ -38,3 +38,22 @@
 .btn:active {
   box-shadow: 0 0 5px var(--bbshadow), 0 0 10px var(--bcolor-1), 0 0 20px var(--bcolor-2), 0 0 40px var(--bcolor-1);
 }
+
+.btn[data-active="true"] {
+  color: #f33 !important;
+  animation: shine 200ms ease-in infinite forwards;
+}
+
+/*  create a animation with keyframe that make the button pulsing and shining like a "star" */
+
+@keyframes shine {
+  0% {
+    box-shadow: 0 0 10px var(--bbshadow);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--bbshadow), 0 0 40px var(--bcolor-1), 0 0 80px var(--bcolor-2), 0 0 160px var(--bcolor-1);
+  }
+  100% {
+    box-shadow: 0 0 10px var(--bbshadow);
+  }
+}

@@ -6,9 +6,12 @@ import React, {
   useImperativeHandle,
   useEffect
 } from "react";
+
+import events from "../utils/events";
+import normalizeEventName from "../utils/normalizeEventName";
+
 import useLoadCodebaby from "../hooks/useLoadLib";
 import avatarCtx from "../context/avatarCtx";
-import events from "../utils/events";
 
 const AvatarProvider = forwardRef(function RefAvatarProvider({ children, id, env, ...onFunctions }, ref) {
   const vidbaby$ = useLoadCodebaby({ id, env });
@@ -49,12 +52,12 @@ const AvatarProvider = forwardRef(function RefAvatarProvider({ children, id, env
       return;
     for(const eventName of eventsName) {
       const key = `on${eventName.charAt(0).toUpperCase() + eventName.slice(1)}`;
-      eventHandler.on(eventName, fns[key]);
+      eventHandler.on(normalizeEventName(eventName), fns[key]);
     };
     return () => {
       for(const eventName of eventsName) {
         const key = `on${eventName.charAt(0).toUpperCase() + eventName.slice(1)}`;
-        eventHandler.off(eventName, fns[key]);
+        eventHandler.off(normalizeEventName(eventName), fns[key]);
       };
     };
   }, [onFunctions, vidbaby$]);

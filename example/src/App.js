@@ -1,27 +1,29 @@
-import React, { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect, useCallback, useState } from 'react';
 import { AvatarProvider } from '@codebaby-avatars/codebaby-react';
+
 import HelloButton from './components/HelloButton';
 
 function App() {
   const aProviderRef = useRef(null);
+  const [isInitialized, setIsInitialized] = useState(false);
   // You could set and unset codebaby events
   // usign 'on' and 'off' methods by ref
   // but it could not work as expected
   // until the codebaby is fully initialized
-  // we advise to use by <AvatarProvider on'EventName'={...} />
-  // useEffect(() => {
-  //   const onResponse = () => {
-  //     console.log('ResponseMessage');
-  //   };
-  //   const aProvider = aProviderRef.current;
-  //   if(aProvider) {
-  //     console.log('aProvider', aProvider);
-  //     aProvider.on('onResponse', onResponse);
-  //     return () => {
-  //       aProvider.off('onResponse', onResponse);
-  //     }
-  //   }
-  // }, [aProviderRef]);
+  // you could use by <AvatarProvider on'EventName'={...} />
+  useEffect(() => {
+    if(!isInitialized) return;
+    const onResponse = (e, responseData) => {
+      console.log('ResponseMessage', responseData);
+    };
+    const aProvider = aProviderRef.current;
+    if(aProvider) {
+      aProvider.on('response', onResponse);
+      return () => {
+        aProvider.off('response', onResponse);
+      }
+    }
+  }, [aProviderRef, isInitialized]);
 
   // you can use ref to trigger the events too
   const handleHello = useCallback(() => {
@@ -36,7 +38,10 @@ function App() {
       ref={aProviderRef}
       // You could listen all codebaby events here
       // using lowerCamelCase like 'initialized' should be 'onInitialized'
-      onInitialized={() => console.log('onInitialized')}
+      onInitialized={() => {
+        console.log('onInitialized')
+        setIsInitialized(true);
+      }}
       id="avatar_159">
       <div className="container">
         <HelloButton/>
