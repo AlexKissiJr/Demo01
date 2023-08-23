@@ -1,0 +1,12 @@
+vite.config.js.*
+vite.config.js
+nodemon.json
+oldpackage.json
+yarn-error.log
+.gitignore
+node_modules/
+example/node_modules/
+example/.gitignore
+/example/README.md
+/example/package-lock.json
+/example/yarn.lock

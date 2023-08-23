@@ -1,17 +1,29 @@
 {
   "name": "@codebaby-avatars/codebaby-react",
   "description": "An interface to the Codebaby API using react.",
-  "main": "./lib/index.js",
-  "version": "0.1.1",
-  "dependencies": {
-    "react": "^18.2.0"
+  "version": "1.0.0",
+  "source": "src/index.js",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/codebaby-react.js",
+  "unpkg": "./dist/codebaby-react.umd.js",
+  "module": "./dist/codebaby-react.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/codebaby-react.esm.js",
+      "require": "./dist/codebaby-react.js"
+    }
   },
   "directories": {
-    "example": "example"
+    "example": "example",
+    "dist": "dist"
   },
   "scripts": {
-    "build": "babel src --out-dir lib",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon",
+    "prebuild": "rimraf ./dist",
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
@@ -31,12 +43,18 @@
     "url": "https://bitbucket.org/idavatars/codebaby-avatars-codebaby-react/issues"
   },
   "homepage": "https://bitbucket.org/idavatars/codebaby-avatars-codebaby-react#readme",
+  "peerDependencies": {
+    "react": "^16.8 || ^17 || ^18",
+    "react-dom": "^16.8 || ^17 || ^18"
+  },
   "devDependencies": {
-    "@babel/cli": "^7.22.6",
-    "@babel/preset-env": "^7.22.7",
-    "@babel/preset-react": "^7.22.5",
-    "babel-loader": "^9.1.3",
-    "webpack": "^5.88.1",
-    "webpack-cli": "^5.1.4"
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "nodemon": "^3.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.7",
+    "vite-plugin-dts": "^3.3.1"
   }
 }
