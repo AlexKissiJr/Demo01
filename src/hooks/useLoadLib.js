@@ -46,9 +46,14 @@ function useLoadCodebaby({ id, env }) {
   
   useLayoutEffect(() => {
     const verify = async () => {
-      const url = env === 'local' || env === 'localhost'
-        ? `http://localhost:8080/loader.js?env=${env}&id=${id}`
-        : `https://portal.codebaby.com/loader.js?env=${env || 'prod'}&id=${id}`;
+      let url = null;
+      if(env === 'local' || env === 'localhost') {
+        url = `http://localhost:8080/loader.js?env=${env}&id=${id}`;
+      } else if(env === 'qa') {
+        url = `https://qa-avatar.n-avatars.com/loader.js?env=${env}&id=${id}`;
+      } else {
+        url = `https://portal.codebaby.com/loader.js?id=${id}`;
+      }
       
       await jqVerHandling();
       await loadScript({ src: url });
