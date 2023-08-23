@@ -11,6 +11,8 @@ npm install @codebaby-avatars/codebaby-react
 Add our provider surrounding your components
 
 ```jsx
+"use client";
+import { useRef } from 'react';
 import { AvatarProvider } from '@codebaby-avatars/codebaby-react';
 
 const App = () => {
