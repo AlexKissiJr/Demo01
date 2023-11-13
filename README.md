@@ -28,6 +28,9 @@ const App = () => {
 	        onInitialized={() => {
                 console.log('onInitialized');
             }}
+            // env could be 'dev', 'local' (or 'localhost'), 'qa' or 'prod' 
+            // (prod is default, then you can leave this empty)
+            env="dev"
 	    >
 	       {
 	        // Your components and/or page(s) goes here

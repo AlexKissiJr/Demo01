@@ -46,14 +46,15 @@ function useLoadCodebaby({ id, env }) {
   
   useLayoutEffect(() => {
     const verify = async () => {
-      let url = null;
-      if(env === 'local' || env === 'localhost') {
-        url = `http://localhost:8080/loader.js?env=${env}&id=${id}`;
-      } else if(env === 'qa') {
-        url = `https://qa-avatar.n-avatars.com/loader.js?env=${env}&id=${id}`;
-      } else {
-        url = `https://portal.codebaby.com/loader.js?id=${id}`;
-      }
+      const environments = {
+        local: `http://localhost:8080/loader.js?id=${id}&env=local`,
+        dev: `https://bridge3-dev.codebaby.com/loader.js?id=${id}&env=dev`,
+        qa: `https://qa-avatar.n-avatars.com/loader.js?id=${id}&env=qa`,
+        default: `https://portal.codebaby.com/loader.js?id=${id}`,
+      };
+
+      const normalizedEnv = env.toLowerCase().replace('localhost', 'local');
+      const url = environments[normalizedEnv] || environments.default;
       
       await jqVerHandling();
       await loadScript({ src: url });
