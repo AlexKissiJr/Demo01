@@ -53,7 +53,7 @@ function useLoadCodebaby({ id, env }) {
         default: `https://portal.codebaby.com/loader.js?id=${id}`,
       };
 
-      const normalizedEnv = env.toLowerCase().replace('localhost', 'local');
+      const normalizedEnv = (env || '').toLowerCase().replace('localhost', 'local');
       const url = environments[normalizedEnv] || environments.default;
       
       await jqVerHandling();

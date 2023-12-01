@@ -68,7 +68,7 @@ function z({ id: e, env: a }) {
         dev: `https://bridge3-dev.codebaby.com/loader.js?id=${e}&env=dev`,
         qa: `https://qa-avatar.n-avatars.com/loader.js?id=${e}&env=qa`,
         default: `https://portal.codebaby.com/loader.js?id=${e}`
-      }, o = a.toLowerCase().replace("localhost", "local"), y = i[o] || i.default;
+      }, o = (a || "").toLowerCase().replace("localhost", "local"), y = i[o] || i.default;
       await L(), await j({ src: y }), c(() => window.vidbaby$);
     };
     window ? r() : setTimeout(r, 3e3);
