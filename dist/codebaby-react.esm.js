@@ -40,12 +40,12 @@ const q = {
   }
 }, l = q;
 function w(e) {
-  const a = e.replace(/([A-Z])/g, (t) => `-${t[0].toLowerCase()}`);
+  const a = e.replace(/([A-Z])/g, (n) => `-${n[0].toLowerCase()}`);
   return Object.keys(l.types).includes(a) ? a : e;
 }
-const j = ({ src: e, type: a = "module", async: t = !0 }) => new Promise((c, r) => {
+const j = ({ src: e, type: a = "module", async: n = !0 }) => new Promise((c, r) => {
   const i = document.createElement("script");
-  i.src = e, i.type = a, i.async = t, i.onload = () => c(i), i.onerror = () => r(new Error("Failed to load script. Check your internet connection.")), document.head.appendChild(i);
+  i.src = e, i.type = a, i.async = n, i.onload = () => c(i), i.onerror = () => r(new Error("Failed to load script. Check your internet connection.")), document.head.appendChild(i);
 });
 async function L() {
   if (typeof window.jQuery > "u" || typeof window.$ != "function" || window.jQuery.fn.jquery === void 0 || window.jQuery.fn.jquery < "3.4.1") {
@@ -60,7 +60,7 @@ async function L() {
   typeof window.$ > "u" && (window.$ = window.jQuery);
 }
 function z({ id: e, env: a }) {
-  const [t, c] = g();
+  const [n, c] = g();
   return C(() => {
     const r = async () => {
       const i = {
@@ -68,11 +68,11 @@ function z({ id: e, env: a }) {
         dev: `https://bridge3-dev.codebaby.com/loader.js?id=${e}&env=dev`,
         qa: `https://qa-avatar.n-avatars.com/loader.js?id=${e}&env=qa`,
         default: `https://portal.codebaby.com/loader.js?id=${e}`
-      }, o = (a || "").toLowerCase().replace("localhost", "local"), y = i[o] || i.default;
+      }, o = (typeof a == "string" ? a : "").toLowerCase().replace("localhost", "local"), y = i[o] || i.default;
       await L(), await j({ src: y }), c(() => window.vidbaby$);
     };
     window ? r() : setTimeout(r, 3e3);
-  }, []), t;
+  }, []), n;
 }
 const N = E({
   on(e, a) {
@@ -81,8 +81,8 @@ const N = E({
   },
   trigger(e, a) {
   }
-}), $ = N, I = R(function({ children: a, id: t, env: c, ...r }, i) {
-  const o = z({ id: t, env: c }), y = u((d, s) => {
+}), $ = N, I = R(function({ children: a, id: n, env: c, ...r }, i) {
+  const o = z({ id: n, env: c }), y = u((d, s) => {
     o && o(document).on(l.tansformEventName(d), s);
   }, [o]), f = u((d, s) => {
     o && o(document).off(l.tansformEventName(d), s);
@@ -98,36 +98,36 @@ const N = E({
   }, [b]), h(() => {
     if (!o || !r || Object.keys(r).length === 0)
       return;
-    const d = r, s = Object.keys(r).filter((n) => n.startsWith("on")).map((n) => n.replace("on", "")).map((n) => n.charAt(0).toLowerCase() + n.slice(1));
+    const d = r, s = Object.keys(r).filter((t) => t.startsWith("on")).map((t) => t.replace("on", "")).map((t) => t.charAt(0).toLowerCase() + t.slice(1));
     if (!(s.length <= 0)) {
-      for (const n of s) {
-        const v = `on${n.charAt(0).toUpperCase() + n.slice(1)}`;
-        b.on(w(n), d[v]);
+      for (const t of s) {
+        const v = `on${t.charAt(0).toUpperCase() + t.slice(1)}`;
+        b.on(w(t), d[v]);
       }
       return () => {
-        for (const n of s) {
-          const v = `on${n.charAt(0).toUpperCase() + n.slice(1)}`;
-          b.off(w(n), d[v]);
+        for (const t of s) {
+          const v = `on${t.charAt(0).toUpperCase() + t.slice(1)}`;
+          b.off(w(t), d[v]);
         }
       };
     }
   }, [r, o]), /* @__PURE__ */ p.createElement($.Provider, { value: b }, /* @__PURE__ */ p.createElement(A, null, a, /* @__PURE__ */ p.createElement("div", { id: "avatarContainer", className: "codebaby-react-avatar-container" })));
 });
 function Q() {
-  const { on: e, off: a, trigger: t } = S($);
-  return { on: e, off: a, trigger: t };
+  const { on: e, off: a, trigger: n } = S($);
+  return { on: e, off: a, trigger: n };
 }
 function D() {
   const [e, a] = g(!1);
   return h(() => {
-    let t = null;
+    let n = null;
     const c = () => {
       if (window && window.vidbaby$ && window.vidbaby && window.vidbaby.initialized)
         return a(!0);
-      t = setTimeout(c, 1e3);
+      n = setTimeout(c, 1e3);
     };
     return c(), () => {
-      t && clearTimeout(t);
+      n && clearTimeout(n);
     };
   }, []), e;
 }
