@@ -9,4 +9,3 @@ vite.config.js.*
 oldpackage.json
 yarn-error.log
 package-lock.json
-/proto-example
