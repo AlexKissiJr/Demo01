@@ -1,7 +1,7 @@
 {
   "name": "@codebaby-avatars/codebaby-react",
   "description": "An interface to the Codebaby API using react.",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "source": "src/index.js",
   "sideEffects": false,
   "files": [
