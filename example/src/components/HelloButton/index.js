@@ -31,7 +31,7 @@ function HelloButton() {
   }, [trigger]);
   return (
     <button className={styles.btn} disabled={isAnswering} onClick={handleAboutCodebaby}>
-      Press Me
+      Say hello
     </button>
   );
 }

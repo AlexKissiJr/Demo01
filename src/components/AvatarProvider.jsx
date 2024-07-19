@@ -52,7 +52,13 @@ const AvatarProvider = forwardRef(function RefAvatarProvider({ children, id, env
       return;
     for(const eventName of eventsName) {
       const key = `on${eventName.charAt(0).toUpperCase() + eventName.slice(1)}`;
-      eventHandler.on(normalizeEventName(eventName), fns[key]);
+      if(eventName == 'initialized') {
+        eventHandler.on(normalizeEventName(eventName), (...args) => {
+          setTimeout(() => fns[key].apply(null, ...args), 1700);
+        });
+      } else {
+        eventHandler.on(normalizeEventName(eventName), fns[key]);
+      }
     };
     return () => {
       for(const eventName of eventsName) {
