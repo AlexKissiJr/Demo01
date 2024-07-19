@@ -27,8 +27,10 @@ function App() {
 
   // you can use ref to trigger the events too
   const handleHello = useCallback(() => {
-    if(aProviderRef.current)
-      aProviderRef.current.trigger('ask', 'Hello from React');
+    if(aProviderRef.current) {
+      console.log('Triggering playResponse')
+      aProviderRef.current.trigger('playResponse', { answer: 'Hello from React' });
+    }
   }, []);
 
   return (
@@ -41,8 +43,9 @@ function App() {
       onInitialized={() => {
         console.log('onInitialized')
         setIsInitialized(true);
+        handleHello();
       }}
-      id="avatar_159">
+      id="react-avatar">
       <div className="container">
         <HelloButton/>
         <div className="logo">
